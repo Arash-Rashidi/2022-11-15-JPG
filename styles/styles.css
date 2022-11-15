@@ -23,6 +23,15 @@ header, nav, footer {
 
 }
 
+
+#js-is-loaded{
+
+    background-color: skyblue;
+    color: red;
+    text-align: center;
+    font-weight: 900;
+}
+
 footer {
     text-align: center;
 
