@@ -1,0 +1,19 @@
+{
+  "name": "2022-11-15-jpg",
+  "version": "0.0.1",
+  "description": "formation jpg",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arash-Rashidi/2022-11-15-JPG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arash-Rashidi/2022-11-15-JPG/issues"
+  },
+  "homepage": "https://github.com/Arash-Rashidi/2022-11-15-JPG#readme"
+}
