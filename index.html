@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -7,115 +7,35 @@
     <title>Formation JPG</title>
 
     <!-- Latest compiled and minified CSS & JS -->
-    <link rel="stylesheet" media="screen" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="/node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="//code.jquery.com/jquery.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="/styles/styles.css">
+    <script src="/js/nav.js"></script>
+    <script src="/js/index.js"></script>
 
 </head>
 
 <body>
-    <div id="js-is-loaded">JS pas charger</div>
-    <header>Meme<span id=header_dot>.</span><span id="header_js">js</span></header>
+    <div id="js-is-loaded">JS <span style="color:red">pas</span> charger</div>
+    <header>Meme<span id="header_dot">.</span><span id="header_js">js</span></header>
     <nav>
         <div class="navbar navbar-inverse">
-            <a class="navbar-brand" href="#">Home</a>
+            <a class="navbar-brand active" href="#" id="link-home">Home</a>
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="#">Thumbnail</a>
+                    <a id="link-thumb" href="/thumbnail">Thumbnail</a>
                 </li>
                 <li>
-                    <a href="#">Create</a>
+                    <a id="link-create" href="/create">Create</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div id="wrapper">
-        <div>
-            <svg width="100%" height="100%" viewBox="0 0 1920 1080" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <image xlink:href="/images/artemis.jpg " x="0" y="0"/>
-                <text x="100"  y="200" style="font-size:25pt; text-decoration: underline; font-style:italic; font-weight:900; fill:skyblue;">Yohhooo!!!</text>
-            </svg>
-        </div>
-        <div>
-            <form action="">
-                <h2>Creator</h2>
-                <label for="meme_titre">
-                    <h3>Titre</h3>
-                </label><br>
-                <input type="text" name="titre" id="meme_titre">
-                <hr>
-                <label for="">
-                    <h3>Image</h3>
-                </label><br>
-                <select name="image" id="meme_image">
-                    <option value="">Pas d'image</option>
-                </select>
-                <hr>
-                <label for="meme_text">
-                    <h3>Texte</h3>
-                </label><br>
-                <input type="text" name="text" id="meme_text">
-                <div class="flex-cols">
-                    <div>
-                        <label for="meme_x">
-                            <h3>X</h3>
-                        </label><br>
-                        <input class="input-small-nud" type="number" name="x" id="meme_x">
-                    </div>
-                    <div>
-                        <label for="meme_y">
-                            <h3>Y</h3>
-                        </label><br>
-                        <input class="input-small-nud" type="number" name="y" id="meme_y">
-                    </div>
-                </div>
-                <hr>
-                <h2>Decorations</h2>
-                <label for="meme_color">
-                    <h3>Couleur</h3>
-                </label><br>
-                <input type="color" name="color" id="meme_color"><br>
-                <div class="flex-cols">
-                    <div>
-                        <label for="meme_fontsize">
-                            <h3>Taille</h3>
-                        </label><br>
-                        <input class="input-big-nud" type="number" name="fontsize" id="meme_fontsize" min="1">
-                    </div>
-                    <div>
-                        <label for="meme_fontweight">
-                            <h3>Poids</h3>
-                        </label><br>
-                        <input class="input-big-nud" type="number" name="fontweight" id="meme_fontweight" min="100"
-                            max="900" step="100">
-                    </div>
-                </div>
-                <div class="flex-cols">
-                    <div>
-                        <label for="meme_underlined">
-                            <h3>Souligné</h3>
-                        </label><br>
-                        <input type="checkbox" name="underlined" id="meme_underlined">
-                    </div>
-                    <div>
-                        <label for="meme_italic">
-                            <h3>Italique</h3>
-                        </label><br>
-                        <input type="checkbox" name="italic" id="meme_italic">
-                    </div>
-                </div><br>
-                <hr>
-                <div class="flex-cols">
-                    <button type="reset" class="btn btn-danger">Reset</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </form>
-        </div>
+        
     </div>
     <footer>&copy;right 2022 ARASH-RASHIDI</footer>
-    <script src="/js/index.js"></script>
 </body>
 
 </html>

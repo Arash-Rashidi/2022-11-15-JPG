@@ -1,21 +1,13 @@
 /**
- * This is a function to take a div element and remove it.
+ * Fonction de loader de js pour suppression du bandeau js loaded
  */
 function loadJS() {
-
-    alert('js charge');
-    let divIsLoaded = document.querySelector('#js-is-loaded');
-    console.log(divIsLoaded);
-
-
-    /* divIsLoaded.innerHTML = 'JS Ok';
-    divIsLoaded.style.backgroundColor = 'skyblue';
-    divIsLoaded.style.color = 'white';
-    divIsLoaded.style.textDocoration = 'underline pink'; */
-
-    divIsLoaded.remove();
-
+    var divJsIsLoaded = document.querySelector('#js-is-loaded');
+    console.log(divJsIsLoaded);
+    //manip dom de supression du noeud dans la structure affichée
+    divJsIsLoaded.remove();
+    setNavbarEvent();
 }
 
-loadJS();
-
+//declenchement de loadjs uniquement aprees chargement du dom complet
+document.addEventListener('DOMContentLoaded',loadJS);
