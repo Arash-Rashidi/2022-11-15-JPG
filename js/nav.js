@@ -42,7 +42,11 @@ function linkHomeEvt(evt) {
     evt.preventDefault();
     console.log("fonction liens home", evt);
     setActiveLinkInNavbar(evt, false);
-    loadPage('home.html');
+    fetch(`${REST_ADR}/memes`).then(r => r.json()).then(arr =>{
+        loadPage('home.html');
+        console.log(arr);
+    })
+    
 }
 function linkThumbnailEvt(evt) {
     //echapement du comportement par defaut de la balise déclenchant l'evenement
