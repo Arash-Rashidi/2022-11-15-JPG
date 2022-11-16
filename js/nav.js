@@ -68,10 +68,14 @@ function linkThumbnailEvt(evt) {
                 memeNode.id = `meme-${meme.id}`;
                 const imageDuMeme = images.find(img=>img.id === meme.imageId);
                 memeNode.querySelector('image').setAttribute('xlink:href','/img/'+imageDuMeme.href);
-                
-                 memeNode.querySelector('text').style.texDecoration = 'underline';
-                
-                
+                // the following line is a demonstration of not using if else.
+                const text = memeNode.querySelector('text');
+                text.style.texDecoration = meme.underline?'underline':'none';
+                text.style.fontStyle = meme.underline?'italic':'none';
+                text.style.fontWeight = meme.fontWeight;
+                text.style.fontSize = meme.fontSize;
+                text.style.fill = meme.color;
+                memeNode.querySelector('svg').setAttribute('viewBox','0 0 '+imageDuMeme.w+' '+imageDuMeme.h);
                 container.querySelector('#thumbnail').append(memeNode);
                 console.log(imageDuMeme)
             })

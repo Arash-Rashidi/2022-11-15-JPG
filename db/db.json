@@ -19,9 +19,9 @@
             "text": "Here is the second",
             "x": 100,
             "y": 100,
-            "fontsize": 25,
+            "fontsize": 82,
             "fontweight": "900",
-            "underline": true,
+            "underline": false,
             "italic": true,
             "color": "#43ABBE",
             "imageId": 2
@@ -35,7 +35,7 @@
             "fontsize": 25,
             "fontweight": "900",
             "underline": true,
-            "italic": true,
+            "italic": false,
             "color": "#26ABBE",
             "imageId": 1
         }
