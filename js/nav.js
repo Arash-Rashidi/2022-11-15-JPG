@@ -51,9 +51,33 @@ function linkHomeEvt(evt) {
 function linkThumbnailEvt(evt) {
     //echapement du comportement par defaut de la balise déclenchant l'evenement
     evt.preventDefault();
+    //console.log('function lien thu')
     console.log("fonction liens thumbnail", evt);
     setActiveLinkInNavbar(evt);
-    loadPage('thumbnail.html');
+    const primages = fetch(`${REST_ADR}/images`).then(r=>r.json());
+    const prememes = fetch(`${REST_ADR}/memes`).then(r=>r.json());
+    Promise.all([primages,prememes])
+    .then(arr => {
+        images = arr[0];
+        memes = arr[1];
+        loadPage('thumbnail.html', container =>{
+            const memeModelNode = container.querySelector('#meme-')
+            memeModelNode.remove();
+            memes.forEach(meme => {
+                const memeNode = memeModelNode.cloneNode(true);
+                memeNode.id = `meme-${meme.id}`;
+                const imageDuMeme = images.find(img=>img.id === meme.imageId);
+                memeNode.querySelector('image').setAttribute('xlink:href','/img/'+imageDuMeme.href);
+                
+                 memeNode.querySelector('text').style.texDecoration = 'underline';
+                
+                
+                container.querySelector('#thumbnail').append(memeNode);
+                console.log(imageDuMeme)
+            })
+        });
+    })
+    
 }
 
 /**
