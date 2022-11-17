@@ -24,7 +24,7 @@
             "underline": false,
             "italic": true,
             "color": "#43ABBE",
-            "imageId": 2
+            "imageId": 1
         },
         {
             "id": 2,
@@ -37,7 +37,7 @@
             "underline": true,
             "italic": false,
             "color": "#26ABBE",
-            "imageId": 1
+            "imageId": 2
         }
     ],
     "images": [

@@ -24,9 +24,11 @@ function setActiveLinkInNavbar(evt, setActiveparentli = true) {
         evt.target.parentElement.classList.add("active");
     }
 }
-function linkCreateEvt(evt) {
+function linkCreateEvt(evt,memeid) {
     //echapement du comportement par defaut de la balise déclenchant l'evenement
     evt.preventDefault();
+    //const url = document.location.href;
+    history.pushState('', 'Meme creator', undefined !== memeid?`/creator/${memeid}`:'/creator');
     console.log("fonction liens create", evt);
     setActiveLinkInNavbar(evt);
     loadPage("create.html", (nodeBase) =>{
@@ -51,6 +53,7 @@ function linkHomeEvt(evt) {
 function linkThumbnailEvt(evt) {
     //echapement du comportement par defaut de la balise déclenchant l'evenement
     evt.preventDefault();
+    history.pushState('', 'Meme creator', '/thumbnail');
     //console.log('function lien thu')
     console.log("fonction liens thumbnail", evt);
     setActiveLinkInNavbar(evt);
@@ -68,14 +71,17 @@ function linkThumbnailEvt(evt) {
                 memeNode.id = `meme-${meme.id}`;
                 const imageDuMeme = images.find(img=>img.id === meme.imageId);
                 memeNode.querySelector('image').setAttribute('xlink:href','/img/'+imageDuMeme.href);
-                // the following line is a demonstration of not using if else.
                 const text = memeNode.querySelector('text');
+                // the following line is a demonstration of not using if else.
                 text.style.texDecoration = meme.underline?'underline':'none';
                 text.style.fontStyle = meme.underline?'italic':'none';
                 text.style.fontWeight = meme.fontWeight;
                 text.style.fontSize = meme.fontSize;
                 text.style.fill = meme.color;
                 memeNode.querySelector('svg').setAttribute('viewBox','0 0 '+imageDuMeme.w+' '+imageDuMeme.h);
+                memeNode.addEventListener('click',(evt)=> {
+                    linkCreateEvt(evt, meme.id)
+                });
                 container.querySelector('#thumbnail').append(memeNode);
                 console.log(imageDuMeme)
             })
