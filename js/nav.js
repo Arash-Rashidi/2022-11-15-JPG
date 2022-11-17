@@ -32,7 +32,12 @@ function setActiveLinkInNavbar(evt, setActiveparentli = true) {
         element.classList.remove("active");
     });
     if (setActiveparentli) {
-        evt.target.parentElement.classList.add("active");
+        const path = location.pathname;
+        if(path.startsWith('/thumbnail')){
+            document.querySelector('nav #link-thumb').parentElement.classList.add("active");
+        }else if (path.startsWith('/creator')){
+            document.querySelector('nav #link-create').parentElement.classList.add("active");
+        }
     }
 }
 function linkCreateEvt(evt,memeid) {
