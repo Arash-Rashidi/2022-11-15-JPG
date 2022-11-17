@@ -1,3 +1,14 @@
+const initRoutes = (evt) => {
+    const path = location.pathname;
+    if(path.startsWith('/thumbnail')){
+        linkThumbnailEvt(evt);
+    }else if (path.startsWith('/creator')){
+        linkCreateEvt(evt);
+    }else{
+        linkHomeEvt(evt);
+    }
+}
+
 function setNavbarEvent() {
     document
         .getElementById("link-create")
@@ -28,7 +39,7 @@ function linkCreateEvt(evt,memeid) {
     //echapement du comportement par defaut de la balise déclenchant l'evenement
     evt.preventDefault();
     //const url = document.location.href;
-    history.pushState('', 'Meme creator', undefined !== memeid?`/creator/${memeid}`:'/creator');
+    history.pushState({}, 'Meme creator', undefined !== memeid?`/creator/${memeid}`:'/creator'); // this command is not used commonly.
     console.log("fonction liens create", evt);
     setActiveLinkInNavbar(evt);
     loadPage("create.html", (nodeBase) =>{
@@ -53,7 +64,7 @@ function linkHomeEvt(evt) {
 function linkThumbnailEvt(evt) {
     //echapement du comportement par defaut de la balise déclenchant l'evenement
     evt.preventDefault();
-    history.pushState('', 'Meme creator', '/thumbnail');
+    history.pushState({}, 'Meme creator', '/thumbnail');
     //console.log('function lien thu')
     console.log("fonction liens thumbnail", evt);
     setActiveLinkInNavbar(evt);
