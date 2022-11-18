@@ -54,7 +54,7 @@ class Memes extends Array {
         arr.map(e => {
             const meme = new Meme();
             Object.assign(meme,e);
-            this.push(img);
+            this.push(meme);
         });
         return this;
     }
