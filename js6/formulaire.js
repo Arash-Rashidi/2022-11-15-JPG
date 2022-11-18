@@ -2,7 +2,7 @@ import {loadPageByPromise} from './commonFunctions.js';
 
 import Images from './objects/Images.js';
 import {images} from './Objects/Images.js';
-import Meme from './Objects/Meme.js';
+import Meme, { currentMeme } from './Objects/Meme.js';
 
 
 export default class VueFormulaire{
@@ -11,10 +11,32 @@ export default class VueFormulaire{
     meme = undefined;
     #nodSelector
     #container = undefined;
+    #currentMeme = new Meme();
     constructor(nodSelector = '#wrapper'){
         this.#nodSelector = nodSelector;
     }
-    #addEvents = () =>{}
+    #ongenericinput = (evt)=>{
+        evt.stopPropagation();
+        const name = evt.target.name;
+        this.#currentMeme[name] = evt.target.value;
+        console.log(this.#currentMeme);
+    }
+    /**
+     * add form event 
+     * Attention : 
+     */
+    #addEvents = () =>{
+
+        this.#container.querySelector('#meme_titre').addEventListener('input', this.#ongenericinput);
+        this.#container.querySelector('#meme_text').addEventListener('input', this.#ongenericinput);
+        this.#container.querySelector('#meme_x').addEventListener('input', this.#ongenericinput);
+        this.#container.querySelector('#meme_y').addEventListener('input', this.#ongenericinput);
+        this.#container.querySelector('#meme_fontSize').addEventListener('input', this.#ongenericinput);
+        this.#container.querySelector('#meme_fontWeight').addEventListener('input', this.#ongenericinput);
+        this.#container.querySelector('#meme_color').addEventListener('input', this.#ongenericinput);
+       
+    }
+    
     #loadingContent = () =>{
         const select =  this.#container.querySelector('select');
         //protection of multi execution of loading
@@ -29,7 +51,6 @@ export default class VueFormulaire{
             option.value = e.id;
             option.innerHTML = e.titre;
             select.append(option);
-
         })
 
     }
@@ -41,11 +62,11 @@ export default class VueFormulaire{
             this.#container = arrayRessources[0];
             images.replaceContentImagesArray(arrayRessources[1]);
             this.#loadingContent();
+            this.#addEvents();
             this.domRefElement = document.querySelector(this.#nodSelector);
             this.domRefElement.innerHTML = '';
             this.#container.childNodes.forEach(elem => this.domRefElement.append(elem));
         });
-
     }
     changeMemeValue = (partialMemeData, evt) => {}
     onSubmitForm = (evt)=>{}
