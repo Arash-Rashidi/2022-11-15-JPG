@@ -8,7 +8,7 @@ class Memes extends Array {
      * fetch GET from rest server and return Images typed Promise form sync
      * @param {string|undefined} path ressource base path on server def: /images
      * @param {string|undefined} baseUrl server base url (not finish by /) def.: REST_ADR
-     * @return {Promise<Images>} promise for sync with others loading 
+     * @return {Promise<Memes>} promise for sync with others loading 
      */
     static fetch = (path = this.#restPath, baseUrl=REST_ADR) => {
         return fetch(`${baseUrl}${path}`).then(r => r.json()).then(arr => {
