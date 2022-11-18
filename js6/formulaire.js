@@ -15,10 +15,14 @@ export default class VueFormulaire{
     constructor(nodSelector = '#wrapper'){
         this.#nodSelector = nodSelector;
     }
+    #renderCurrent = ()=>{
+        this.domRefElement.querySelector('svg').replaceWith(this.#currentMeme.renderSvg())
+    }
     #ongenericinput = (evt)=>{
         evt.stopPropagation();
         const name = evt.target.name;
         this.#currentMeme[name] = evt.target.value;
+        this.#renderCurrent();
         console.log(this.#currentMeme);
     }
     /**
@@ -36,6 +40,10 @@ export default class VueFormulaire{
         this.#container.querySelector('#meme_color').addEventListener('input', this.#ongenericinput); */
         this.#container.querySelectorAll('form input[type=text], form input[type=number], form input[type=color]')
         .forEach(e=>{e.addEventListener('input', this.#ongenericinput);})
+        this.#container.querySelector('select').addEventListener('change', evt => {
+            this.#currentMeme.setImage( Number(evt.target.value),images);
+            this.#renderCurrent();
+        })
     }
     
     #loadingContent = () =>{
