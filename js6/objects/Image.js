@@ -3,4 +3,5 @@ export default class Image {
     h = 0;
     href = 0;
     id = -1;
+    titre = '';
 }

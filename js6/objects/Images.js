@@ -51,10 +51,7 @@ export default class Images extends Array {
         if (!Array.isArray(arr)) return;
         arr.map(e => {
             const img = new Image();
-            img.h = e.h;
-            img.w = e.w;
-            img.href = e.href;
-            img.id = e.id;
+            Object.assign(img,e);
             this.push(img);
         })
         return this;
@@ -68,10 +65,7 @@ export default class Images extends Array {
         if (!Array.isArray(arr)) return;
         arr.map(e => {
             const img = new Image();
-            img.h = e.h;
-            img.w = e.w;
-            img.href = e.href;
-            img.id = e.id;
+            Object.assign(img,e);
             this.push(img);
         });
         return this;
