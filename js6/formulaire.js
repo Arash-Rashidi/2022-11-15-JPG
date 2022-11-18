@@ -23,10 +23,10 @@ export default class VueFormulaire{
     }
     /**
      * add form event 
-     * Attention : 
+     * Attention : all html form elements must be already loaded in this.#container
      */
     #addEvents = () =>{
-
+        // adding event listener to each input
         this.#container.querySelector('#meme_titre').addEventListener('input', this.#ongenericinput);
         this.#container.querySelector('#meme_text').addEventListener('input', this.#ongenericinput);
         this.#container.querySelector('#meme_x').addEventListener('input', this.#ongenericinput);
