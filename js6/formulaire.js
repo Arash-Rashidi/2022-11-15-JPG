@@ -27,14 +27,15 @@ export default class VueFormulaire{
      */
     #addEvents = () =>{
         // adding event listener to each input
-        this.#container.querySelector('#meme_titre').addEventListener('input', this.#ongenericinput);
+        /* this.#container.querySelector('#meme_titre').addEventListener('input', this.#ongenericinput);
         this.#container.querySelector('#meme_text').addEventListener('input', this.#ongenericinput);
         this.#container.querySelector('#meme_x').addEventListener('input', this.#ongenericinput);
         this.#container.querySelector('#meme_y').addEventListener('input', this.#ongenericinput);
         this.#container.querySelector('#meme_fontSize').addEventListener('input', this.#ongenericinput);
         this.#container.querySelector('#meme_fontWeight').addEventListener('input', this.#ongenericinput);
-        this.#container.querySelector('#meme_color').addEventListener('input', this.#ongenericinput);
-       
+        this.#container.querySelector('#meme_color').addEventListener('input', this.#ongenericinput); */
+        this.#container.querySelectorAll('form input[type=text], form input[type=number], form input[type=color]')
+        .forEach(e=>{e.addEventListener('input', this.#ongenericinput);})
     }
     
     #loadingContent = () =>{
