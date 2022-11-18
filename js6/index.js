@@ -1,3 +1,4 @@
+import {initRoutes, setNavbarEvent} from './nav.js'
 /**
  * Fonction de loader de js pour suppression du bandeau js loaded
  */

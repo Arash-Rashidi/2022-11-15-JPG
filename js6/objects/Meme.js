@@ -1,4 +1,7 @@
-class Meme {
+import Image from './Image.js';
+import REST_ADR from '../constant.js';
+
+export default class Meme {
     #serveurRessourceUrl = undefined;
 
     id = undefined;
@@ -57,4 +60,6 @@ class Meme {
     save = () => {
 
      }
-}
+};
+
+export const currentMeme = new Meme();

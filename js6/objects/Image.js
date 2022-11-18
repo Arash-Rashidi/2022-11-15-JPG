@@ -1,4 +1,4 @@
-class Image {
+export default class Image {
     w = 0;
     h = 0;
     href = 0;

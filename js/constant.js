@@ -1,3 +1,4 @@
+
 const REST_ADR = 'http://localhost:5679';
 // a constant object 
 const CONFIG_DATA = Object.freeze({

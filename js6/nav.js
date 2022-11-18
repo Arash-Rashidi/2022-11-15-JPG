@@ -1,4 +1,11 @@
-const initRoutes = (evt) => {
+import REST_ADR, {CONFIG_DATA as cfdata} from './constant.js';
+import VueFormulaire from './formulaire.js'
+// importing all the contents
+// import 8 as CONST from "./constantes.js";
+
+
+
+export const initRoutes = (evt) => {
     const path = location.pathname;
     if(path.startsWith('/thumbnail')){
         linkThumbnailEvt(evt);
@@ -9,7 +16,7 @@ const initRoutes = (evt) => {
     }
 }
 
-function setNavbarEvent() {
+export function setNavbarEvent() {
     document
         .getElementById("link-create")
         .addEventListener("click", linkCreateEvt);
@@ -47,13 +54,8 @@ function linkCreateEvt(evt,memeid) {
     history.pushState({}, 'Meme creator', undefined !== memeid?`/creator/${memeid}`:'/creator'); // this command is not used commonly.
     console.log("fonction liens create", evt);
     setActiveLinkInNavbar(evt);
-    loadPage("create.html", (nodeBase) =>{
-        let form = nodeBase.querySelector('form');
-        form.addEventListener('submit', (evt) =>{
-            evt.preventDefault();
-            console.log('form sent');
-        })
-    });
+    const form =  new VueFormulaire();
+    form.loadPage();
 }
 function linkHomeEvt(evt) {
     //echapement du comportement par defaut de la balise déclenchant l'evenement
@@ -77,15 +79,15 @@ function linkThumbnailEvt(evt) {
     const prememes = fetch(`${REST_ADR}/memes`).then(r=>r.json());
     Promise.all([primages,prememes])
     .then(arr => {
-        images = arr[0];
-        memes = arr[1];
+        window.images = arr[0];
+        window.memes = arr[1];
         loadPage('thumbnail.html', container =>{
             const memeModelNode = container.querySelector('#meme-')
             memeModelNode.remove();
-            memes.forEach(meme => {
+            window.memes.forEach(meme => {
                 const memeNode = memeModelNode.cloneNode(true);
                 memeNode.id = `meme-${meme.id}`;
-                const imageDuMeme = images.find(img=>img.id === meme.imageId);
+                const imageDuMeme = window.images.find(img=>img.id === meme.imageId);
                 memeNode.querySelector('image').setAttribute('xlink:href','/img/'+imageDuMeme.href);
                 const text = memeNode.querySelector('text');
                 // the following line is a demonstration of not using if else.
@@ -125,7 +127,7 @@ function loadPage(pageHref, callback) {
             console.log(doc2); */
             let container = document.createElement('div');
             container.innerHTML = html;
-            if (undefined !== callback && typeof(callback) === 'function' ){ // it is better to write like this in the condition
+            if ( typeof(callback) === 'function' ){ // it is better to write like this in the condition
                 callback(container)
             };
             container.childNodes.forEach(element => {
